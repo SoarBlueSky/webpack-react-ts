@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import { TsT } from '../TsFile';
+// import reduxTest1 from '../../component/reduxTest';
+import { Counter } from '../TsFile/Counter';
 interface IState {
     Text:String,
 }
@@ -8,11 +10,12 @@ class HomePage extends Component<{},IState> {
     constructor(props) {
         super(props);
         this.state = {
-            Text:'HomePage'
+            Text:'webpack-react-ts'
         }
     }
     componentDidMount(){
-        TsT();
+        // TsT();
+        // reduxTest1();
     }
     componentDidUpdate(prevProps,prevState) {
 
@@ -30,6 +33,7 @@ class HomePage extends Component<{},IState> {
         let { Text } = this.state;
         return <div>
             {Text}
+            <Counter></Counter>
         </div>
     }
 

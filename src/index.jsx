@@ -1,33 +1,14 @@
-// const myPromise = require('./mypromise.js');
-// let Promise = new myPromise((resolve, reject) => {
-//     setTimeout(() =>{
-//         resolve(2222);
-//     },2000)
-    
-// })
-
-// Promise.then((res) =>{
-//     // console.log(res,'res');
-//     return res;
-// },(err) =>{
-//     console.log(err,'err');
-// }).then((res) =>{
-//     console.log(res,'res');
-// })
-
-// import deelclone from './component/deelclone';
-// let arr = [1,2,3,4];
-// let newtegArr = deelclone(arr);
-// newtegArr[1] = 1;
-// console.dir(arr,newtegArr,'newtegArr');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './page/HomePage/index';
-
+import { store } from './store'
+import { Provider } from 'react-redux'
 ReactDOM.render(
   <React.StrictMode>
-  <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('app')
 );
