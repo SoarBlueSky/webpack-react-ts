@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { TsT } from '../TsFile';
 // import reduxTest1 from '../../component/reduxTest';
 import { Counter } from '../TsFile/Counter';
+import Highcharts from '../../component/highcharts';
 interface IState {
     Text:String,
 }
@@ -34,6 +35,7 @@ class HomePage extends Component<{},IState> {
         return <div>
             {Text}
             <Counter></Counter>
+            <Highcharts></Highcharts>
         </div>
     }
 
