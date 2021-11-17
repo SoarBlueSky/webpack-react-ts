@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from './counterSlice'
 export function Counter() {
   const count = useSelector((state: RootState) => state.counter.value); //获取redux里面的值
   const dispatch = useDispatch() //使用dispatch去修改值
+  const [i,setI] = useState(1);
 
   return (
     <div>

@@ -3,6 +3,7 @@ import { TsT } from '../TsFile';
 // import reduxTest1 from '../../component/reduxTest';
 import { Counter } from '../TsFile/Counter';
 import Highcharts from '../../component/highcharts';
+import mypromise from '../../component/mypromise';
 interface IState {
     Text:String,
 }
@@ -17,6 +18,12 @@ class HomePage extends Component<{},IState> {
     componentDidMount(){
         // TsT();
         // reduxTest1();
+        console.log(mypromise.all,'mypromise');
+        mypromise.all([1,2,3,4]).then((res) =>{
+            console.log(res,'res');
+        },(err) =>{
+            console.log(err);   
+        })
     }
     componentDidUpdate(prevProps,prevState) {
 

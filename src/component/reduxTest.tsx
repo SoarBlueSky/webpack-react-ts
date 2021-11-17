@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-  function ReduxTest(){
-
+function ReduxTest(){
+    
     const slice = createSlice({
         name: "home",
         initialState: {

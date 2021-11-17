@@ -34,6 +34,18 @@ function resolePromise(promise2,x,resolve,reject) {
         }
     }
 }
+
+function iterableToArray (iterable) {
+    if (typeof Array.from === 'function') {
+        // ES2015+, iterables exist
+        iterableToArray = Array.from;
+        return Array.from(iterable);
+    }
+
+    // ES5, only arrays and array-likes exist
+    iterableToArray = function (x) { return Array.prototype.slice.call(x); };
+    return Array.prototype.slice.call(iterable);
+}
 class myPromise {
     constructor(excutor){
         this.state = PENDING;
@@ -112,4 +124,76 @@ class myPromise {
         return this.then(null,err);
     }
 }
-module.exports = myPromise
+
+myPromise.resolve = function (value) {
+    if (value instanceof Promise) return value;
+
+    if (value === null) return NULL;
+    if (value === undefined) return UNDEFINED;
+    if (value === true) return TRUE;
+    if (value === false) return FALSE;
+    if (value === 0) return ZERO;
+    if (value === '') return EMPTYSTRING;
+
+    if (typeof value === 'object' || typeof value === 'function') {
+        try {
+        var then = value.then;
+        if (typeof then === 'function') {
+            return new myPromise(then.bind(value));
+        }
+        } catch (ex) {
+        return new myPromise(function (resolve, reject) {
+            reject(ex);
+        });
+        }
+    }
+    return valuePromise(value);
+};
+
+myPromise.all = function (arr) {
+    var args = iterableToArray(arr);
+    
+    return new myPromise(function (resolve, reject) {
+      if (args.length === 0) return resolve([]);
+      var remaining = args.length;
+      function res(i, val) {
+        if (val && (typeof val === 'object' || typeof val === 'function')) {
+          if (val instanceof myPromise && val.then === myPromise.prototype.then) {
+            while (val._state === 3) {
+              val = val._value;
+            }
+            if (val._state === 1) return res(i, val._value);
+            if (val._state === 2) reject(val._value);
+            val.then(function (val) {
+              res(i, val);
+            }, reject);
+            return;
+          } else {
+            var then = val.then;
+            if (typeof then === 'function') {
+              var p = new myPromise(then.bind(val));
+              p.then(function (val) {
+                res(i, val);
+              }, reject);
+              return;
+            }
+          }
+        }
+        args[i] = val;
+        if (--remaining === 0) {
+          resolve(args);
+        }
+      }
+      for (var i = 0; i < args.length; i++) {
+        res(i, args[i]);
+      }
+    });
+  };
+  
+  myPromise.reject = function (value) {
+    return new myPromise(function (resolve, reject) {
+      reject(value);
+    });
+  };
+
+export default myPromise;
