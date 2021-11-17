@@ -7,19 +7,23 @@ export function Counter() {
   const dispatch = useDispatch() //使用dispatch去修改值
 
   function twoSum(nums: number[], target: number){ //两数之和
+
     let map = {};
+
     for(let key in nums){
-        let l = target - nums[key];
-        if(map[l] !== undefined){
-            return [map[l],Number(key)];
+
+        let difference = target - nums[key]
+
+        if(map[difference] !== undefined){
+
+            return [map[difference],Number(key)]
+
         }
+
         map[nums[key]] = Number(key);
+        
     }
-    // 4 {} '1'
-    // 5 {6: 0} '2'
-    // 7 {5: 1, 6: 0} '3'
-    // 9 {3: 2, 5: 1, 6: 0} '4'
-    // 3 {1: 3, 3: 2, 5: 1, 6: 0} '5'
+  
   };
 
   useEffect(() =>{
