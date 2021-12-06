@@ -39,7 +39,17 @@ module.exports = {
              { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
 
              // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-             { enforce: "pre", exclude: /node_modules/, test: /\.js$/, loader: "source-map-loader" }
+             { enforce: "pre", exclude: /node_modules/, test: /\.js$/, loader: "source-map-loader" },
+             {test:/\.css$/,use:['style-loader','css-loader']},
+             {test:/\.less$/,use:['style-loader','css-loader',{
+                loader: "less-loader",
+                options: {
+                  lessOptions: {
+                    javascriptEnabled: true,
+                  },
+                },
+              },]},//less的loader
+             {test:/\.scss$/,use:['style-loader','css-loader','sass-loader']}//scss的loader
           ],
     }
 }

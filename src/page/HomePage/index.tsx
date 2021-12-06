@@ -4,6 +4,8 @@ import { TsT } from '../TsFile';
 import { Counter } from '../TsFile/Counter';
 import Highcharts from '../../component/highcharts';
 import mypromise from '../../component/mypromise';
+import '../../component/b'
+import AntdForm from '../AntdForm/index';
 interface IState {
     Text:String,
 }
@@ -38,6 +40,7 @@ class HomePage extends Component<{},IState> {
             {Text}
             <Counter></Counter>
             <Highcharts></Highcharts>
+            <AntdForm></AntdForm>
         </div>
     }
 

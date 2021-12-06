@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './page/HomePage/index';
 import { store } from './store'
 import { Provider } from 'react-redux'
+import 'antd/dist/antd.less';
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
