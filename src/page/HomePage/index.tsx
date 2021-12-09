@@ -6,6 +6,7 @@ import Highcharts from '../../component/highcharts';
 import mypromise from '../../component/mypromise';
 import '../../component/b'
 import AntdForm from '../AntdForm/index';
+import Live2d from '../../component/live2d';
 interface IState {
     Text:String,
 }
@@ -41,6 +42,7 @@ class HomePage extends Component<{},IState> {
             <Counter></Counter>
             <Highcharts></Highcharts>
             <AntdForm></AntdForm>
+            <Live2d></Live2d>
         </div>
     }
 

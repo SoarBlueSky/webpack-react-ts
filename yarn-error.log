@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add antd
+  /usr/local/bin/node /usr/local/bin/yarn add copy-webpack-plugin
 
 PATH: 
   /usr/local/var/pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/var/pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.9/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EINVAL: invalid argument, mkdir '/Users/peng/workfile/webpack-react-ts/node_modules/define-property/node_modules/is-data-descriptor/node_modules'
+  Error: ENOENT: no such file or directory, copyfile '/Users/peng/Library/Caches/Yarn/v6/npm-ms-2.1.2-d09d1f357b443f493382a8eb3ccd183872ae6009-integrity/node_modules/ms/package.json' -> '/Users/peng/workfile/webpack-react-ts/node_modules/@babel/helper-define-polyfill-provider/node_modules/ms/package.json'
 
 npm manifest: 
   {
@@ -34,6 +34,7 @@ npm manifest:
       "@babel/preset-typescript": "^7.15.0",
       "@reduxjs/toolkit": "^1.6.2",
       "@types/react-redux": "^7.1.20",
+      "antd": "^4.17.2",
       "babel-loader": "^8.2.3",
       "bufferutil": "^4.0.5",
       "clean-webpack-plugin": "^4.0.0",
@@ -43,6 +44,7 @@ npm manifest:
       "react": "^17.0.2",
       "react-dom": "^17.0.2",
       "react-redux": "^7.2.6",
+      "stylelint-disable": "^0.1.5",
       "utf-8-validate": "^5.0.7",
       "webpack": "^5.59.1",
       "webpack-cli": "^4.9.1",
@@ -55,7 +57,13 @@ npm manifest:
       "@types/react": "^17.0.31",
       "awesome-typescript-loader": "^5.2.1",
       "babel-loader": "^8.2.3",
+      "css-loader": "^6.5.1",
+      "less": "^4.1.2",
+      "less-loader": "^10.2.0",
+      "sass": "^1.44.0",
+      "sass-loader": "^12.3.0",
       "source-map-loader": "^3.0.0",
+      "style-loader": "^3.3.1",
       "ts-loader": "^9.2.6",
       "typescript": "3"
     }

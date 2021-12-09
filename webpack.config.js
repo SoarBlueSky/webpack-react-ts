@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // 通过 npm 安装
 const webpack = require('webpack'); // 访问内置的插件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { resolve } = path;
+const CopyPlugin = require('copy-webpack-plugin');
+
+
 module.exports = {
     mode: 'development',// production development
     devServer: {
@@ -24,7 +27,13 @@ module.exports = {
         new HtmlWebpackPlugin({ //生成index.html模板
             filename:'index.html',
             template:path.resolve(__dirname, 'index.html'),
-    })],
+        }),
+        new CopyPlugin({
+          patterns: [
+            { from:  __dirname + '/public', to: __dirname + '/dist/public'},
+          ],
+        }),
+    ],
     resolve:{ //引入文件的时候可以省略后缀名
         extensions:['.ts', '.js','.jsx','.tsx',]
     },
@@ -33,7 +42,7 @@ module.exports = {
             {
               test: /\.(js|jsx|tsx)?$/,
               use: ['babel-loader'],
-              include: path.resolve(__dirname, 'src'),
+              include: [path.resolve(__dirname, 'src'),path.resolve(__dirname, 'public')],
             },
              // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
              { test: /\.tsx?$/, exclude: /node_modules/, loader: "awesome-typescript-loader" },
