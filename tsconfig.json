@@ -19,6 +19,6 @@
       "baseUrl": "./src",
       "downlevelIteration": true,
     },
-    "include": ["src", "assets", "public/live2d.js"]
+    "include": ["src", "assets", "public/live2d.js","images.d.ts"]
   }
   

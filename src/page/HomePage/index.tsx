@@ -8,6 +8,7 @@ import "../../component/b";
 import AntdForm from "../AntdForm/index";
 import Live2d from "../../component/live2d";
 import "../../component/scroll";
+import GitLinkImg from "../../assets/images/link.png";
 import "./index.scss";
 interface IState {
   Text: String;
@@ -37,12 +38,15 @@ class HomePage extends Component<{}, IState> {
     return (
       <div>
         <div id="scrollDiv"></div>
+        <a href="https://github.com/lyp000119/webpack-react-ts" target="_blank">
+          <img className="Gitlinkimg" src={GitLinkImg} alt="" />
+        </a>
         {Text}
         <Counter></Counter>
         <Highcharts></Highcharts>
         <AntdForm></AntdForm>
         <Live2d></Live2d>
-        <div style={{ height: "3000px",}}></div>
+        <div style={{ height: "3000px" }}></div>
       </div>
     );
   }
