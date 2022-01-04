@@ -10,6 +10,8 @@ import Live2d from "../../component/live2d";
 import "../../component/scroll";
 import GitLinkImg from "../../assets/images/link.png";
 import "./index.scss";
+import hljs from "highlight.js";
+
 interface IState {
   Text: String;
 }
@@ -24,8 +26,12 @@ class HomePage extends Component<{}, IState> {
   componentDidMount() {
     TsT();
     // reduxTest1();
+    hljs.highlightAll();
   }
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    
+    
+  }
   shouldComponentUpdate(nextProps, nextState) {
     return true;
   }
@@ -36,7 +42,7 @@ class HomePage extends Component<{}, IState> {
   render() {
     let { Text } = this.state;
     return (
-      <div>
+      <div className="bigBox">
         <div id="scrollDiv"></div>
         <a href="https://github.com/lyp000119/webpack-react-ts" target="_blank">
           <img className="Gitlinkimg" src={GitLinkImg} alt="" />
@@ -46,6 +52,14 @@ class HomePage extends Component<{}, IState> {
         <Highcharts></Highcharts>
         <AntdForm></AntdForm>
         <Live2d></Live2d>
+        <pre>
+          <code className="hljs language-javascript">
+{`let str = Hello world; 
+let a = 1;`}
+          </code>
+          <code className="">console.log(a,'a')</code>
+        </pre>
+
         <div style={{ height: "3000px" }}></div>
       </div>
     );
