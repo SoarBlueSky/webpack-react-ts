@@ -4,13 +4,13 @@ import { TsT } from "../TsFile";
 import { Counter } from "../TsFile/Counter";
 import Highcharts from "../../component/highcharts";
 import mypromise from "../../component/mypromise";
-import "../../component/b";
 import AntdForm from "../AntdForm/index";
-import Live2d from "../../component/live2d";
-import "../../component/scroll";
+// import Live2d from "../../component/live2d";
 import GitLinkImg from "../../assets/images/link.png";
-import "./index.scss";
 import hljs from "highlight.js";
+import "./index.scss";
+import "../../component/scroll";
+import "../../component/b";
 
 interface IState {
   Text: String;
@@ -28,10 +28,7 @@ class HomePage extends Component<{}, IState> {
     // reduxTest1();
     hljs.highlightAll();
   }
-  componentDidUpdate(prevProps, prevState) {
-    
-    
-  }
+  componentDidUpdate(prevProps, prevState) {}
   shouldComponentUpdate(nextProps, nextState) {
     return true;
   }
@@ -51,10 +48,10 @@ class HomePage extends Component<{}, IState> {
         <Counter></Counter>
         <Highcharts></Highcharts>
         <AntdForm></AntdForm>
-        <Live2d></Live2d>
+        {/* <Live2d></Live2d> */}
         <pre>
           <code className="hljs language-javascript">
-{`let str = Hello world; 
+            {`let str = Hello world; 
 let a = 1;`}
           </code>
           <code className="">console.log(a,'a')</code>

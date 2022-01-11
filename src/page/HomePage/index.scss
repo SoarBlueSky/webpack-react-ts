@@ -1,31 +1,44 @@
-#scrollDiv{
-    position: fixed;
-    top: 0;
-    z-index: 111;
-    height: 4px;
-    background: rgb(0, 147, 42);
-    width: 0;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
+html body {
+  width: 50%;
+  margin: 0 auto;
 }
-.Gitlinkimg{
-    position: fixed;
-    top: -0px;
-    left: 0;
-    width: 150px;
-    height: 150px;
-    cursor: pointer;
-    z-index: 100;
-  }
-  body::-webkit-scrollbar{
-    width: 5px;
-    height: 5px;
-  }
-  body::-webkit-scrollbar-thumb{
-    border-radius: 3px;
-    background-color: rgba(0, 147, 42,.5);
-  }
-  body::-webkit-scrollbar-track{
-    border-radius: 2px;
-    background-color: hsla(0,0%,100%,.1);
-  }
+#scrollDiv {
+  position: fixed;
+  top: 0;
+  z-index: 111;
+  height: 4px;
+  background: rgb(0, 147, 42);
+  width: 0;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.Gitlinkimg {
+  position: fixed;
+  top: -0px;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  z-index: 100;
+}
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(0, 147, 42, 0.5);
+}
+body::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+.bigBox code {
+  padding: 1rem;
+  font-size: 1.2rem;
+  white-space: pre;
+  border-radius: 4px;
+  border: none;
+  background: rgba(0, 147, 42, 0.2);
+  margin: 0;
+}
