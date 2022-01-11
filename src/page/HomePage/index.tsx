@@ -5,7 +5,7 @@ import { Counter } from "../TsFile/Counter";
 import Highcharts from "../../component/highcharts";
 import mypromise from "../../component/mypromise";
 import AntdForm from "../AntdForm/index";
-// import Live2d from "../../component/live2d";
+import Live2d from "../../component/live2d";
 import GitLinkImg from "../../assets/images/link.png";
 import hljs from "highlight.js";
 import "./index.scss";
@@ -48,7 +48,8 @@ class HomePage extends Component<{}, IState> {
         <Counter></Counter>
         <Highcharts></Highcharts>
         <AntdForm></AntdForm>
-        {/* <Live2d></Live2d> */}
+        {/* TO DO live2d会影响自动化测试  */}
+        <Live2d></Live2d>
         <pre>
           <code className="hljs language-javascript">
             {`let str = Hello world; 
