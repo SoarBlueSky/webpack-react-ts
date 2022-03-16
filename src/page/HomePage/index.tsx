@@ -22,6 +22,8 @@ class HomePage extends Component<{}, IState> {
     this.state = {
       Text: "webpack-react-ts",
     };
+    this.sendIssues = this.sendIssues.bind(this);
+    this.newGithubIssueUrl = this.newGithubIssueUrl.bind(this);
   }
   componentDidMount() {
     TsT();
@@ -35,6 +37,58 @@ class HomePage extends Component<{}, IState> {
   componentWillUnmount() {}
   componentDidCatch(error, info) {
     //如果render报错会出现错误信息
+  }
+  newGithubIssueUrl(options: any = {}) {
+    let repoUrl;
+    if (options.repoUrl) {
+      repoUrl = options.repoUrl;
+    } else if (options.user && options.repo) {
+      repoUrl = `https://github.com/${options.user}/${options.repo}`;
+    } else {
+      throw new Error(
+        "You need to specify either the `repoUrl` option or both the `user` and `repo` options"
+      );
+    }
+
+    const url = new URL(`${repoUrl}/issues/new`);
+
+    const types = [
+      "body",
+      "title",
+      "labels",
+      "template",
+      "milestone",
+      "assignee",
+      "projects",
+    ];
+
+    for (const type of types) {
+      let value = options[type];
+      if (value === undefined) {
+        continue;
+      }
+
+      if (type === "labels" || type === "projects") {
+        if (!Array.isArray(value)) {
+          throw new TypeError(`The \`${type}\` option should be an array`);
+        }
+
+        value = value.join(",");
+      }
+
+      url.searchParams.set(type, value);
+    }
+
+    return url.toString();
+  }
+  sendIssues() {
+    const url = this.newGithubIssueUrl({
+      user: "running-elephant",
+      repo: "datart",
+      body: "\n\n\n---\nI'm a human. Please be nice.",
+      title:'Ceshi'
+    });
+    console.log(url, "url");
   }
   render() {
     let { Text } = this.state;
@@ -57,7 +111,7 @@ let a = 1;`}
           </code>
           <code className="">console.log(a,'a')</code>
         </pre>
-
+        <button onClick={this.sendIssues}>发送issues</button>
         <div style={{ height: "3000px" }}></div>
       </div>
     );
