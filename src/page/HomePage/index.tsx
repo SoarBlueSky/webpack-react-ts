@@ -111,7 +111,7 @@ let a = 1;`}
           </code>
           <code className="">console.log(a,'a')</code>
         </pre>
-        <button onClick={this.sendIssues}>发送issues (gitee)</button>
+        <button onClick={this.sendIssues}>发送issues (g)</button>
         <div style={{ height: "3000px" }}></div>
       </div>
     );
